@@ -1,0 +1,30 @@
+﻿@model LooksLikeVidly.ViewModels.CustomersListViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+@if (Model.Customer.Count == 0)
+{
+    <p> Customer list is empty.</p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col" width="10%">User number</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model.Customer)
+            {
+                <tr>
+                    <th scope="row">@customer.Id</th>
+                    <td>@Html.ActionLink(customer.Name, "Details/"+customer.Id, "Customer")</td>
+                </tr>
+            }
+        </tbody>
+    </table> 
+}
